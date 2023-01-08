@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Butler } from '@services/butler.service';
+import { AuthRESTService } from '@services/authREST.service';
+import { DataApiService } from '@services/data-api.service'; 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public _butler:Butler,
+    public AuthRESTService:AuthRESTService, 
+    public dataApiService: DataApiService
+    ) { }
 
   ngOnInit(): void {
   }

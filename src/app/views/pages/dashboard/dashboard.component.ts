@@ -460,7 +460,7 @@ function getMonthlySalesChartOptions(obj: any) {
     },
     yaxis: {
       title: {
-        text: 'Number of Sales',
+        text: 'Visitas por mes',
         style:{
           size: 9,
           color: obj.muted

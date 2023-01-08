@@ -8,7 +8,7 @@ export const MENU: MenuItem[] = [
   {
     label: 'Activos',
     icon: 'user-check',
-    link: '/apps/chat',
+    link: '/members/memberlist',
   },
   {
     label: 'Solicitudes',

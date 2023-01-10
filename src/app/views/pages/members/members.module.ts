@@ -15,6 +15,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 
 import { MembersComponent } from './members.component';
 import { MemberlistComponent } from './list/memberlist.component';
+import { RequestComponent } from './request/request.component';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
@@ -68,6 +69,10 @@ const routes: Routes = [
       // },
     
       {
+        path: 'request',
+        component: RequestComponent
+      },
+      {
         path: 'memberlist',
         component: MemberlistComponent
       }
@@ -81,7 +86,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [MemberlistComponent,MembersComponent],
+  declarations: [MemberlistComponent,MembersComponent, RequestComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

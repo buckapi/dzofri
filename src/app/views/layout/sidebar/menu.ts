@@ -10,15 +10,15 @@ export const MENU: MenuItem[] = [
     icon: 'user-check',
     link: '/members/memberlist',
   },
-  {
-    label: 'Solicitudes',
-    icon: 'user-plus',
-    link: '/apps/calendar',
-    badge: {
-      variant: 'primary',
-      text: '2',
-    }
-  },
+  // {
+  //   label: 'Solicitudes',
+  //   icon: 'user-plus',
+  //   link: '/members/request',
+  //   badge: {
+  //     variant: 'primary',
+  //     text: '2',
+  //   }
+  // },
   {
     label: 'Autopartes',
     isTitle: true

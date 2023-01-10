@@ -59,6 +59,8 @@ export class RegisterComponent implements OnInit {
           const token = user.id;
          this.card.userd='p'+token;
          this.card.name=this.form.value.name;
+         this.card.email=this.form.value.email;
+         this.card.status="pending";
          this._butler.userd=this.card.userd;  
           this.AuthRESTService.setToken(token);
           

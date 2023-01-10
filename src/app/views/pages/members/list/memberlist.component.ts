@@ -1,17 +1,27 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-
+import { Butler } from '@services/butler.service';
+import { DataApiService } from '@services/data-api.service'; 
 @Component({
   selector: 'app-memberlist',
   templateUrl: './memberlist.component.html',
   styleUrls: ['./memberlist.component.scss']
 })
 export class MemberlistComponent implements OnInit, AfterViewInit {
-
+  cards$:any=[];
   defaultNavActiveId = 1;
 
-  constructor() { }
-
-  ngOnInit(): void { }
+  constructor(
+    public _butler:Butler,
+    public dataApiService: DataApiService,
+    ) { }
+ getCards(){
+    this.dataApiService.getAllCards().subscribe(response => {
+    this.cards$ = response
+    });
+ }
+  ngOnInit(): void { 
+    this.getCards();
+  }
 
   ngAfterViewInit(): void {
 

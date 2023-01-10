@@ -18,9 +18,9 @@
               <tr>
              <!--    <th>User</th> -->
                 <th>Nombre o razon social</th>
-                <!-- <th></th> -->
                 <th>Email</th>
                 <th>Status</th>
+                <th>Fecha</th>
               </tr>
             </thead>
             <tbody>
@@ -34,6 +34,7 @@
                 </td> -->
                 <td>{{card.email}}</td>
                 <td>{{card.status}}</td>
+                <td>{{card.createdAt | date:'dd/MM/yyyy'}}</td>
               </tr>
            
             </tbody>

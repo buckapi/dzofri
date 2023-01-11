@@ -37,4 +37,18 @@ export const MENU: MenuItem[] = [
     icon: 'truck',
     link: '/apps/chat',
   },
+  {
+    label: 'Ventas',
+    isTitle: true
+  },
+  {
+    label: 'Clientes',
+    icon: 'award',
+    link: '/apps/chat',
+  },
+  {
+    label: 'Ordenes de compra',
+    icon: 'shopping-cart',
+    link: '/apps/chat',
+  },
 ];

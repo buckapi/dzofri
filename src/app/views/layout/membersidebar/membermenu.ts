@@ -27,7 +27,7 @@ export const MENU: MenuItem[] = [
     {
     label: 'Inventario',
     icon: 'package',
-    link: '/apps/chat',
+    link: '/parts/partslist',
   },
   {
     label: 'Autos',
@@ -36,6 +36,25 @@ export const MENU: MenuItem[] = [
   {
     label: 'Catalogo',
     icon: 'truck',
+    link: '/parts/partslist',
+  },
+    {
+    label: 'Ventas',
+    isTitle: true
+  },
+  {
+    label: 'Clientes',
+    icon: 'award',
+    link: '/apps/chat',
+  },
+  {
+    label: 'Ordenes de compra',
+    icon: 'shopping-cart',
+    link: '/apps/chat',
+  },  
+  {
+    label: 'History',
+    icon: ' mdi-history',
     link: '/apps/chat',
   },
 ];

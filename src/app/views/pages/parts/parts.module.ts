@@ -19,7 +19,7 @@ import { NewpartComponent } from './newpart/newpart.component';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-
+import { FilePickerModule } from  'ngx-awesome-uploader';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -90,6 +90,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [PartslistComponent,NewpartComponent, PartsComponent],
   imports: [
+  FilePickerModule,
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,

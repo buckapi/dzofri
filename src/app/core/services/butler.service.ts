@@ -7,6 +7,7 @@ export class Butler {
     car:any[]=[];
 
     ticket:any[]=[];
+    images:any[]=[];
     currency:number=1;
     init:number=1;
     end:number=12;
@@ -15,6 +16,7 @@ export class Butler {
     totalNotifications:number=0;
     subTotalGral:number=0;
     results:number=0;
+        file:any={};
     preview:any={};
     bramch:any={};
     deal:any={};

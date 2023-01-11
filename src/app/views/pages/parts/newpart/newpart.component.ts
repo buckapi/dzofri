@@ -6,6 +6,9 @@ import { AuthRESTService } from '@services/authREST.service';
 import { Butler } from '@services/butler.service';
 import { DataApiService } from '@services/data-api.service'; 
 import{NgxUiLoaderService} from 'ngx-ui-loader';
+import { HttpClient } from  '@angular/common/http';
+
+import { DemoFilePickerAdapter } from  './file-picker.adapter';
 
 @Component({
   selector: 'app-newpart',
@@ -15,9 +18,9 @@ import{NgxUiLoaderService} from 'ngx-ui-loader';
 export class NewpartComponent implements OnInit, AfterViewInit {
 cards$:any=[];
   defaultNavActiveId = 1;
-
+adapter = new  DemoFilePickerAdapter(this.http,this._butler.file);
   constructor(
-
+private http: HttpClient,
  private route: ActivatedRoute,
     private ngxService: NgxUiLoaderService,
     private router: Router,

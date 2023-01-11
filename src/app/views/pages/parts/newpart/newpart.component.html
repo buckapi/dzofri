@@ -1,3 +1,5 @@
+
+
 <nav class="page-breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a routerLink=".">Miembros</a></li>
@@ -9,37 +11,10 @@
   <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <!-- <h4 class="card-title">Striped Table</h4> -->
-        <!-- <p class="text-muted mb-3">Add class <code>.table-striped</code></p> -->
-
-        <div class="table-responsive">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-             <!--    <th>User</th> -->
-                <th>Nombre o razon social</th>
-                <th>Email</th>
-                <th>Status</th>
-                <th>Fecha</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor='let card of cards$; let i = index'    [hidden]=" card.status!='pending'" >
-             
-                <td>{{card.name}}</td>
-            <!--     <td>
-                  <div class="progress">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </td> -->
-                <td>{{card.email}}</td>
-                <td>{{card.status}}</td>
-                <td>{{card.createdAt | date:'dd/MM/yyyy'}}</td>
-              </tr>
-           
-            </tbody>
-          </table>
-        </div>
+      <ngx-awesome-uploader
+      [adapter]="adapter"
+      >
+      </ngx-awesome-uploader>
         
       </div>
     </div>

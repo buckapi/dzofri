@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Renderer2, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-
 import MetisMenu from 'metismenujs';
-
 import { MENU } from './membermenu';
 import { MenuItem } from './membermenu.model';
 import { Router, NavigationEnd } from '@angular/router';

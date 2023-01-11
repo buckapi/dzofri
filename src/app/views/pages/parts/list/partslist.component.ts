@@ -8,6 +8,7 @@ import { DataApiService } from '@services/data-api.service';
 })
 export class PartslistComponent implements OnInit, AfterViewInit {
   cards$:any=[];
+  products$:any=[];
   defaultNavActiveId = 1;
 
   constructor(
@@ -19,8 +20,13 @@ export class PartslistComponent implements OnInit, AfterViewInit {
     this.cards$ = response
     });
  }
+ getProducts(){
+    this.dataApiService.getAllProducts().subscribe(response => {
+    this.products$ = response
+    });
+ }
   ngOnInit(): void { 
-    this.getCards();
+    this.getProducts();
   }
 
   ngAfterViewInit(): void {

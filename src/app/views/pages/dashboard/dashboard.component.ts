@@ -10,7 +10,12 @@ import { DataApiService } from '@services/data-api.service';
   preserveWhitespaces: true
 })
 export class DashboardComponent implements OnInit {
-userActive:any;
+  products$:any=[];
+  cards$:any=[];
+  partsSize:number=0;
+  newMembersSize:number=0;
+  activatedMembersSize:number=0;
+  userActive:any;
   /**
    * Apex chart
    */
@@ -50,8 +55,31 @@ userActive:any;
     ) {
     // this._butler.userActive=this.dataApiService.getCardByUserId(this._butler.userd).subscribe();
   }
-
+ getProducts(){
+    this.dataApiService.getAllProducts().subscribe(response => {
+    this.products$ = response;
+    this.partsSize=this.products$.length;
+    });
+ }
+  getCards(){
+    this.newMembersSize=0;
+    this.activatedMembersSize=0;
+    this.dataApiService.getAllCards().subscribe(response => {
+    this.cards$ = response
+    for (let i=0;i<0;i++){
+      if(this.cards$[i].status==='pending'){
+        this.newMembersSize=this.newMembersSize+1;
+      }
+        if(this.cards$[i].status==='activated'){
+        this.activatedMembersSize=this.activatedMembersSize+1;
+      }
+    }
+    // this.cardsSize=this.cards$.length;
+    });
+ }
   ngOnInit(): void {
+    this.getCards();
+    this.getProducts();
  // console.log("loged, userd: "+this._butler.userActive[0].userd);
     this.currentDate = this.calendar.getToday();
     this.customersChartOptions = getCustomerseChartOptions(this.obj);

@@ -52,9 +52,5 @@ export const MENU: MenuItem[] = [
     icon: 'shopping-cart',
     link: '/apps/chat',
   },  
-  {
-    label: 'History',
-    icon: ' mdi-history',
-    link: '/apps/chat',
-  },
+ 
 ];

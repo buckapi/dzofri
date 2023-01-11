@@ -26,7 +26,7 @@ export const MENU: MenuItem[] = [
     {
     label: 'Inventario',
     icon: 'package',
-    link: '/apps/chat',
+    link: '/parts/partslist',
   },
   {
     label: 'Autos',

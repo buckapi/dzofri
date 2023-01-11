@@ -61,6 +61,7 @@ export class RegisterComponent implements OnInit {
          this.card.name=this.form.value.name;
          this.card.email=this.form.value.email;
          this.card.status="pending";
+         this.card.profileStatus="pending";
          this._butler.userd=this.card.userd;  
           this.AuthRESTService.setToken(token);
           

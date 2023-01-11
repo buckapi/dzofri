@@ -1,17 +1,14 @@
- import { FilePreviewModel } from 'ngx-awesome-uploader';
-// import { FilePreviewModel } from '../assets/file-picker/src/lib/file-preview.model';//
+import { FilePreviewModel } from 'ngx-awesome-uploader';
 import { HttpRequest, HttpClient, HttpEvent, HttpEventType } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-// import { FilePickerAdapter } from '../assets/file-picker/src/lib/file-picker.adapter';
 import { FilePickerAdapter } from 'ngx-awesome-uploader';
 import { Butler } from '@services/butler.service';
-
 export class DemoFilePickerAdapter extends FilePickerAdapter {
   constructor(
     private http: HttpClient,
     public _butler:Butler
-     ) {
+  ) {
     super();
   }
   public uploadFile(fileItem: FilePreviewModel) {
@@ -27,17 +24,15 @@ export class DemoFilePickerAdapter extends FilePickerAdapter {
           console.log("Nombre: ",this._butler.file[0].name);
          this._butler.images.push('https://db.buckapi.us:80/api/server/local-storage/tixsImages'+this._butler.file[0].name);
           return res.body.id.toString();
-       
         } else if (res.type ===  HttpEventType.UploadProgress && res.total  !== undefined) {
-            // Compute and show the % done:
             const UploadProgress = +Math.round((100 * res.loaded) / res.total);
             return UploadProgress;
         }
       })
-      );
+    );
   }
-    public removeFile(fileItem:any): Observable<any> {
+  public removeFile(fileItem:any): Observable<any> {
     const removeApi = 'https://db.buckapi.us/api/containers/tixsImages/upload';
     return this.http.post(removeApi, {});
-    }
+  }
 }

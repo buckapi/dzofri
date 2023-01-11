@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { LayoutModule } from './views/layout/layout.module';
 import { AuthGuard } from './core/guard/auth.guard';
+import { AuthRESTGuard } from './core/guard/authREST.guard';
 
 import { AppComponent } from './app.component';
 import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
@@ -27,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [
     AuthGuard,
+    AuthRESTGuard,
     {
       provide: HIGHLIGHT_OPTIONS, // https://www.npmjs.com/package/ngx-highlightjs
       useValue: {

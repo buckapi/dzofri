@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BaseComponent } from './views/layout/base/base.component';
 import { AuthGuard } from './core/guard/auth.guard';
+import { AuthRESTGuard } from './core/guard/authREST.guard';
 import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
 
 
@@ -10,7 +11,7 @@ const routes: Routes = [
   {
     path: '',
     component: BaseComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthRESTGuard],
     children: [
       {
         path: 'dashboard',

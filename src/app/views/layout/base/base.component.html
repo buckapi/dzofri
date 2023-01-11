@@ -1,7 +1,8 @@
-<div class="main-wrapper">
+<div class="main-wrapper" >
 
   <!-- partial:sidebar -->
-  <app-sidebar></app-sidebar>
+  <app-sidebar  [hidden]="_butler.type!='admin'"></app-sidebar>
+  <app-membersidebar [hidden]="_butler.type!='member'"></app-membersidebar>
   <!-- partial -->
 
   <div class="page-wrapper">

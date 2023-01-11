@@ -44,10 +44,10 @@ export class AuthRESTService {
 	  }
 	getCurrentUser(): UserInterface {
     let user_string = localStorage.getItem("currentUser");
-	    if (!user_string ) {
+	    if (user_string ) {
 		      let user: UserInterface = JSON.parse(user_string!);
 		      return user;
-		    } else {
+		    } else { 
 		      return null!;
 			}
   		}

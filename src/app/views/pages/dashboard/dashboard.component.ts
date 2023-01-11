@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
 import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
+import { Butler } from '@services/butler.service';
+import { DataApiService } from '@services/data-api.service'; 
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +10,7 @@ import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
   preserveWhitespaces: true
 })
 export class DashboardComponent implements OnInit {
-
+userActive:any;
   /**
    * Apex chart
    */
@@ -42,23 +43,26 @@ export class DashboardComponent implements OnInit {
    */
   currentDate: NgbDateStruct;
 
-  constructor(private calendar: NgbCalendar) {}
+  constructor(
+      public _butler:Butler,
+      public dataApiService: DataApiService,
+      private calendar: NgbCalendar
+    ) {
+    // this._butler.userActive=this.dataApiService.getCardByUserId(this._butler.userd).subscribe();
+  }
 
   ngOnInit(): void {
+ // console.log("loged, userd: "+this._butler.userActive[0].userd);
     this.currentDate = this.calendar.getToday();
-
     this.customersChartOptions = getCustomerseChartOptions(this.obj);
     this.ordersChartOptions = getOrdersChartOptions(this.obj);
     this.growthChartOptions = getGrowthChartOptions(this.obj);
     this.revenueChartOptions = getRevenueChartOptions(this.obj);
     this.monthlySalesChartOptions = getMonthlySalesChartOptions(this.obj);
     this.cloudStorageChartOptions = getCloudStorageChartOptions(this.obj);
-
-    // Some RTL fixes. (feel free to remove if you are using LTR))
     if (document.querySelector('html')?.getAttribute('dir') === 'rtl') {
       this.addRtlOptions();
     }
-
   }
 
 

@@ -39,7 +39,8 @@
                 <h3 class="mb-2">{{activatedMembersSize}}</h3>
                 <div class="d-flex align-items-baseline">
                   <p class="text-success">
-                    <span>+ {{newMembersSize}}</span>
+
+                    <span [routerLink]="['/members/request']" style="cursor:pointer;">+ {{newMembersSize}}</span>
                     <i data-feather="arrow-up" appFeatherIcon class="icon-sm mb-1"></i>
                   </p>
                 </div>

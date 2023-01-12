@@ -65,15 +65,17 @@ export class DashboardComponent implements OnInit {
     this.newMembersSize=0;
     this.activatedMembersSize=0;
     this.dataApiService.getAllCards().subscribe(response => {
-    this.cards$ = response
-    for (let i=0;i<0;i++){
-      if(this.cards$[i].status==='pending'){
-        this.newMembersSize=this.newMembersSize+1;
+    this.cards$ = response;
+    let size = this.cards$.length;
+      for (let i=0;i<size;i++){
+        if(this.cards$[i].status=='pending'){
+          this.newMembersSize=this.newMembersSize+1;
+        }
+          if(this.cards$[i].status=='activated'){
+          this.activatedMembersSize=this.activatedMembersSize+1;
+        }
       }
-        if(this.cards$[i].status==='activated'){
-        this.activatedMembersSize=this.activatedMembersSize+1;
-      }
-    }
+     // console.log("totales, news: " +this.newMembersSize +" activated: "+this.activatedMembersSize);
     // this.cardsSize=this.cards$.length;
     });
  }

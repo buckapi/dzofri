@@ -39,7 +39,7 @@
               <a routerLink="/apps/chat" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i class="feather icon-truck icon-lg mb-1"></i><p class="tx-12">Autos</p></a>
             </div>
             <div class="col-6 text-center">
-              <a routerLink="/apps/calendar" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i class="feather icon-package icon-lg mb-1"></i><p class="tx-12">Autopartes</p></a>
+              <a routerLink="/parts/partslist" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i class="feather icon-package icon-lg mb-1"></i><p class="tx-12">Autopartes</p></a>
             </div>
           <!--   <div class="col-3 text-center">
               <a routerLink="/apps/email/inbox" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i class="feather icon-mail icon-lg mb-1"></i><p class="tx-12">Email</p></a>
@@ -205,8 +205,8 @@
               <img class="wd-80 ht-80 rounded-circle" src="{{_butler.images[0]}}" alt="">
             </div>
             <div class="text-center">
-              <p class="tx-16 fw-bolder">{{_butler.userActive[0].name}}</p>
-              <p class="tx-12 text-muted">{{_butler.userActive[0].email}}</p>
+              <p class="tx-16 fw-bolder">{{_butler.name}}</p>
+              <p class="tx-12 text-muted">{{_butler.email}}</p>
             </div>
           </div>
           <ul class="list-unstyled p-1">

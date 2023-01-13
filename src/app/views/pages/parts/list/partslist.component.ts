@@ -20,17 +20,27 @@ export class PartslistComponent implements OnInit, AfterViewInit {
     this.cards$ = response
     });
  }
- getProducts(){
+ getParts(){
     this.dataApiService.getAllProducts().subscribe(response => {
     this.products$ = response
     });
  }
+ getMyParts(){
+    this.dataApiService.getPartsById(this._butler.userd).subscribe(response => {
+    this.products$ = response
+    });
+ }
   ngOnInit(): void { 
-    this.getProducts();
+    
   }
 
   ngAfterViewInit(): void {
-
+    if (this._butler.type=='admin'){  
+      this.getParts();
+    }
+    if (this._butler.type=='member'){  
+      this.getMyParts();
+    }
     // Show chat-content when clicking on chat-item for tablet and mobile devices
     document.querySelectorAll('.chat-list .chat-item').forEach(item => {
       item.addEventListener('click', event => {

@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
     return this.ngFormLogin.controls;
   }
   ngOnInit(): void {
+    this._butler.type="";
     this.ngFormLogin = this.formBuilder.group({
       email: ['', [Validators.required,Validators.email]],
       password: ['', [Validators.required]]
@@ -46,8 +47,7 @@ export class LoginComponent implements OnInit {
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
-  onLogin(){
-  
+  onLogin(){  
     this.submitted = true;
     if (this.ngFormLogin.invalid) {
       return;
@@ -64,6 +64,7 @@ export class LoginComponent implements OnInit {
         const token = data.id;
         this.AuthRESTService.setToken(token);
         this._butler.userd="p"+data.userId;
+        this._butler.isLogged=true;
         this.dataApiService.getCardByUserId(this._butler.userd).subscribe(
           data =>{
             this._butler.userActive=data;
@@ -76,7 +77,7 @@ export class LoginComponent implements OnInit {
         this.isError = false;
         this.ngxService.stop("loader-01");
         localStorage.setItem('isLoggedin', 'true');
-        this.router.navigate(['']);
+        this.router.navigate(['dashboard']);
       },
        error => this.onIsError()
     ); 

@@ -12,18 +12,17 @@ import{NgxUiLoaderService} from 'ngx-ui-loader';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
   returnUrl: any;
-
-   form: FormGroup = new FormGroup({
+  form: FormGroup = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
     name: new FormControl(''),
   });
-    submitted = false;
-    public isError = false;
-    public user:any={};
-    public card:any={};
+  submitted = false;
+  public isError = false;
+  public user:any={};
+  public card:any={};
+
   constructor(
     private route: ActivatedRoute,
     private ngxService: NgxUiLoaderService,
@@ -33,9 +32,11 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     public AuthRESTService:AuthRESTService
    ) { }
+
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
   }
+
   ngOnInit(): void {
      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
      this.form = this.formBuilder.group(
@@ -46,48 +47,48 @@ export class RegisterComponent implements OnInit {
       }    
     );
   }
-    public register(){  
-          this.ngxService.start("loader-01");
-    this.AuthRESTService
-        .registerUser( 
-          this.user.email, 
-          this.user.password 
-          )
-        .subscribe(
-          user => {    
+
+  public register(){  
+    this.ngxService.start("loader-01");
+    this.AuthRESTService.registerUser( 
+      this.user.email, 
+      this.user.password 
+    ).subscribe(
+        user => {    
           this.AuthRESTService.setUser(user);
           const token = user.id;
-         this.card.userd='p'+token;
-         this.card.name=this.form.value.name;
-         this.card.email=this.form.value.email;
-         this.card.status="pending";
-         this.card.profileStatus="pending";
-         this._butler.userd=this.card.userd;  
+          this.card.userd='p'+token;
+          this.card.name=this.form.value.name;
+          this.card.email=this.form.value.email;
+          this.card.status="pending";
+          this.card.userType="member";
+          this.card.profileStatus="pending";
+          this.card.images=["assets/images/default.jpg"];
+          this._butler.userd=this.card.userd;  
           this.AuthRESTService.setToken(token);
-          
           this.dataApiService.saveCard(this.card).subscribe(card =>{
-            // this.toastSvc.success("Registro exitoso!");
-              this.ngxService.stop("loader-01");
-            // this.showMethod=true;
-              localStorage.setItem('isLoggedin', 'true');
-              if (localStorage.getItem('isLoggedin')) {
-                this.router.navigate([this.returnUrl]);
-              }
-               this._butler.type='member';
-              this.router.navigate(['/']);
+            this.ngxService.stop("loader-01");
+            localStorage.setItem('isLoggedin', 'true');
+            if (localStorage.getItem('isLoggedin')) {
+              this.router.navigate([this.returnUrl]);
+            }
+            this._butler.images=["assets/images/default.jpg"];
+            this._butler.name=this.form.value.name;
+            this._butler.email=this.form.value.email;
+            this._butler.type='member';
+            this.router.navigate(['/']);
           });
-          }, 
-          error => {
-                if(error.status==422){
-                this.isError = true;
-                // this.waiting=false;
-                // this.message="La dirección de correo ya se encuentra registrada";
-              }
+        }, 
+        error => {
+            if(error.status==422){
+            this.isError = true;
+            this.ngxService.stop("loader-01");
           }
-        );
-}
-   public onSubmit(): void {
-    //console.log("entramos");
+        }
+      );
+  }
+
+  public onSubmit(): void {
     this.submitted = true;
     if (this.form.invalid) {
       return;
@@ -96,7 +97,6 @@ export class RegisterComponent implements OnInit {
     this.user.password=this.form.value.password; 
     this.card.name=this.user.name;
     this.register();
-   
   }
 
   onRegister(e: Event) {

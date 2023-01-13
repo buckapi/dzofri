@@ -11,8 +11,10 @@ import { DataApiService } from '@services/data-api.service';
 })
 export class DashboardComponent implements OnInit {
   products$:any=[];
+  myProducts$:any=[];
   cards$:any=[];
   partsSize:number=0;
+  myPartsSize:number=0;
   newMembersSize:number=0;
   activatedMembersSize:number=0;
   userActive:any;
@@ -56,10 +58,23 @@ export class DashboardComponent implements OnInit {
     // this._butler.userActive=this.dataApiService.getCardByUserId(this._butler.userd).subscribe();
   }
  getProducts(){
-    this.dataApiService.getAllProducts().subscribe(response => {
-    this.products$ = response;
-    this.partsSize=this.products$.length;
-    });
+    this.products$=[];
+    setTimeout (() => {
+      this.dataApiService.getAllProducts().subscribe(response => {
+        this.products$ = response;
+        this.partsSize=this.products$.length;
+      });
+    }, 1000);
+   
+ }
+ getPartsById(){
+  this.myProducts$=[];
+  setTimeout (() => {
+    this.dataApiService.getPartsById(this._butler.userd).subscribe(response => {
+      this.myProducts$ = response;
+      this.myPartsSize=this.myProducts$.length;
+      });
+    }, 1000);  
  }
   getCards(){
     this.newMembersSize=0;
@@ -71,18 +86,20 @@ export class DashboardComponent implements OnInit {
         if(this.cards$[i].status=='pending'){
           this.newMembersSize=this.newMembersSize+1;
         }
-          if(this.cards$[i].status=='activated'){
+        if(this.cards$[i].status=='activated'){
           this.activatedMembersSize=this.activatedMembersSize+1;
         }
       }
-     // console.log("totales, news: " +this.newMembersSize +" activated: "+this.activatedMembersSize);
-    // this.cardsSize=this.cards$.length;
     });
  }
   ngOnInit(): void {
-    this.getCards();
-    this.getProducts();
- // console.log("loged, userd: "+this._butler.userActive[0].userd);
+    if(this._butler.type=='admin'){      
+      this.getCards();
+      this.getProducts();
+    }
+    if(this._butler.type=='member'){      
+      this.getPartsById();
+    }
     this.currentDate = this.calendar.getToday();
     this.customersChartOptions = getCustomerseChartOptions(this.obj);
     this.ordersChartOptions = getOrdersChartOptions(this.obj);
@@ -96,9 +113,6 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  /**
-   * Only for RTL (feel free to remove if you are using LTR)
-   */
   addRtlOptions() {
     // Revenue chart
     this.revenueChartOptions.yaxis.labels.offsetX = -25;
@@ -543,7 +557,7 @@ function getMonthlySalesChartOptions(obj: any) {
 /**
  * Cloud storage chart options
  */
- function getCloudStorageChartOptions(obj: any) {
+function getCloudStorageChartOptions(obj: any) {
   return {
     series: [67],
     chart: {

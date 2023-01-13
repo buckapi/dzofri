@@ -25,6 +25,8 @@ export class Butler {
     imagePreviewProduct:string="";
       subTotal:number=0;
     review:boolean=false;
+    carsSelected:boolean=false;
+    partsSelected:boolean=true;
     vector:any={};       
     string:string=""; 
     distance:string="";

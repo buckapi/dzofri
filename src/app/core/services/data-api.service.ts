@@ -4,6 +4,9 @@ import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/operators';
 import { Butler } from "@services/butler.service";
 
+export interface MemberInterface {
+
+}
 export interface CardInterface {
 
 }
@@ -19,6 +22,7 @@ export interface SerialInterface {
 export class DataApiService {
 		ticket: Observable<any>;
 	cards:any;
+	parts:any;
 	branch:any;
 	cierre:any;
 	serial:any;
@@ -58,7 +62,18 @@ export class DataApiService {
 		this.cierre = this.http.get(url_api);
 		return ( this.http.get(url_api));		
 	}
-
+	memberUpdate(member :MemberInterface, id: string){
+		// let token = this.authService.getToken();
+		const url_api=`https://db.buckapi.us:9001/api/cards/${id}`;
+		return this.http
+		.put<MemberInterface>(url_api, member)
+		.pipe(map(data => data));
+	}
+	getPartsById(userId: string){
+		const url_api = `https://db.buckapi.us:9001/api/products?filter[where][userId]=${userId}`;
+		this.parts = this.http.get(url_api);
+		return ( this.http.get(url_api));		
+	}
 	getCardByUserId(userId: string){
 		const url_api = `https://db.buckapi.us:9001/api/cards?filter[where][userd]=${userId}`;
 		this.cards = this.http.get(url_api);

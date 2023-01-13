@@ -73,6 +73,7 @@ export class RegisterComponent implements OnInit {
               if (localStorage.getItem('isLoggedin')) {
                 this.router.navigate([this.returnUrl]);
               }
+               this._butler.type='member';
               this.router.navigate(['/']);
           });
           }, 

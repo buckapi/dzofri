@@ -11,15 +11,12 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { NgbDropdownModule, NgbTooltipModule, NgbNavModule, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 
-import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-
-import { MembersComponent } from './members.component';
-import { MemberlistComponent } from './list/memberlist.component';
-import { RequestComponent } from './request/request.component';
+import { CustomersComponent } from './customers.component';
+import { CustomerslistComponent } from './list/customerslist.component';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-
+import { FilePickerModule } from  'ngx-awesome-uploader';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -37,7 +34,7 @@ import { QuillModule } from 'ngx-quill';
 const routes: Routes = [
   {
     path: '',
-    component: MembersComponent,
+    component: CustomersComponent,
     children: [
       // {
       //   path: '',
@@ -68,14 +65,13 @@ const routes: Routes = [
       //   ]
       // },
     
+    
       {
-        path: 'request',
-        component: RequestComponent
-      },
-      {
-        path: 'memberlist',
-        component: MemberlistComponent
+        path: 'customerslist',
+        component: CustomerslistComponent
       }
+
+
       // ,
       // {
       //   path: 'calendar',
@@ -86,8 +82,9 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [MemberlistComponent,MembersComponent, RequestComponent],
+  declarations: [CustomerslistComponent, CustomersComponent],
   imports: [
+  FilePickerModule,
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
@@ -99,7 +96,6 @@ const routes: Routes = [
     NgbCollapseModule,
     NgSelectModule,
     QuillModule.forRoot(), // ngx-quill
-     SweetAlert2Module.forRoot(),
   ],
   providers: [
     {
@@ -108,4 +104,4 @@ const routes: Routes = [
     }
   ]
 })
-export class MembersModule { }
+export class CustomersModule { }

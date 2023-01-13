@@ -44,7 +44,7 @@ export const MENU: MenuItem[] = [
   {
     label: 'Clientes',
     icon: 'award',
-    link: '/apps/chat',
+    link: '/customers/customerslist',
   },
   {
     label: 'Ordenes de compra',

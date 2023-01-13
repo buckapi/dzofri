@@ -7,21 +7,41 @@ import { DataApiService } from '@services/data-api.service';
   styleUrls: ['./memberlist.component.scss']
 })
 export class MemberlistComponent implements OnInit, AfterViewInit {
+  
+  show:any=false;
   cards$:any=[];
+  cardToSee:any={};
+  parts$:any=[];
   defaultNavActiveId = 1;
 
   constructor(
     public _butler:Butler,
     public dataApiService: DataApiService,
     ) { }
- getCards(){
+  getCards(){
     this.dataApiService.getAllCards().subscribe(response => {
     this.cards$ = response
     });
- }
+  }
+  loadPartsById(card:any){
+    let id=card.userd;
+    this.cardToSee=card;
+    this.dataApiService.getPartsById(id).subscribe(response =>{
+      this.parts$=response;
+    this.show=true;
+    });
+  }
   ngOnInit(): void { 
     this.getCards();
   }
+  setCars(){
+    console.log("seteado a cars");
+    this._butler.carsSelected=true;
+    this._butler.partsSelected=false;}
+  setParts(){
+    console.log("seteado a parts");
+    this._butler.carsSelected=false;
+    this._butler.partsSelected=true;}
 
   ngAfterViewInit(): void {
 

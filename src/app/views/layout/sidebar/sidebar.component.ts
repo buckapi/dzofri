@@ -19,7 +19,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
   menuItems: MenuItem[] = [];
   @ViewChild('sidebarMenu') sidebarMenu: ElementRef;
 
-  constructor(@Inject(DOCUMENT) private document: Document, private renderer: Renderer2, router: Router) { 
+  constructor(@Inject(DOCUMENT) private document: Document, private renderer: Renderer2,public router: Router) { 
     router.events.forEach((event) => {
       if (event instanceof NavigationEnd) {
 

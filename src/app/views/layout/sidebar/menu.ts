@@ -35,7 +35,7 @@ export const MENU: MenuItem[] = [
   {
     label: 'Catalogo',
     icon: 'truck',
-    link: '/apps/chat',
+    link: '/cars/carslist',
   },
   {
     label: 'Ventas',

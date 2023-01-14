@@ -30,7 +30,7 @@ export class NewpartComponent implements OnInit, AfterViewInit {
   cards$:any=[];
   defaultNavActiveId = 1;
   partImages:any[]=[];
-  adapter = new  DemoFilePickerAdapter(this.http,this._butler.file,this._butler);
+  adapter = new  DemoFilePickerAdapter(this.http,this._butler);
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,

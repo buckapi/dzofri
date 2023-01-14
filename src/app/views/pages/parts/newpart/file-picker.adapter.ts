@@ -4,12 +4,10 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { FilePickerAdapter } from 'ngx-awesome-uploader';
 import { Butler } from '@services/butler.service';
-import { UploaderService } from '@services/uploader.service';
 export class DemoFilePickerAdapter extends FilePickerAdapter {
   image:any="";
   constructor(
     private http: HttpClient,
-    public uploaderService:UploaderService,
     public _butler:Butler
   ) {
     super();

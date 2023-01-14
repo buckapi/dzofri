@@ -4,6 +4,9 @@ import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/operators';
 import { Butler } from "@services/butler.service";
 
+export interface PartInterface {
+
+}
 export interface MemberInterface {
 
 }
@@ -91,7 +94,7 @@ export class DataApiService {
 	// 	this.butler.serialT=this.branch.serialT;
 	// 	return ( this.branch);		
 	// }
-setSerialT(serial:SerialInterface, branch: string){
+	setSerialT(serial:SerialInterface, branch: string){
 		// let token = this.authService.getToken();
 		const url_api = `https://db.buckapi.us:9001/api/branchs/${branch}`;
 		return this.http
@@ -104,6 +107,13 @@ setSerialT(serial:SerialInterface, branch: string){
 		const url_api='https://db.buckapi.us:9001/api/cards';
 		return this.http
 		.post<CardInterface>(url_api, card)
+		.pipe(map(data => data));
+	}
+
+	savePart(part :PartInterface){
+		const url_api='https://db.buckapi.us:9001/api/products';
+		return this.http
+		.post<PartInterface>(url_api, part)
 		.pipe(map(data => data));
 	}
 	saveTicket(ticket :TicketInterface){

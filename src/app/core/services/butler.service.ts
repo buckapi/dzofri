@@ -7,6 +7,7 @@ export class Butler {
     car:any[]=[];
     ticket:any[]=[];
     images:any[]=[];
+    partImages:any[]=[];
     myProducts$:any={};
     cards$:any={};
     products$:any={};

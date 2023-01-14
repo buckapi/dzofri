@@ -18,6 +18,7 @@ export class NewpartComponent implements OnInit, AfterViewInit {
   form: FormGroup = new FormGroup({
     brand: new FormControl(''),
     model: new FormControl(''),
+    price: new FormControl(''),
     name: new FormControl(''),
     description: new FormControl(''),
     cod: new FormControl(''),
@@ -28,7 +29,8 @@ export class NewpartComponent implements OnInit, AfterViewInit {
   public newPart:any={};
   cards$:any=[];
   defaultNavActiveId = 1;
-  adapter = new  DemoFilePickerAdapter(this.http,this._butler.file);
+  partImages:any[]=[];
+  adapter = new  DemoFilePickerAdapter(this.http,this._butler.file,this._butler);
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
@@ -44,18 +46,29 @@ export class NewpartComponent implements OnInit, AfterViewInit {
   }
   ngOnInit(): void { 
   }
-    public register(){  
-    
+  
+  public savePart(){  
+    this.dataApiService.savePart(this.newPart).subscribe(respose=>{
+      this.router.navigate(['parts/partslist']);
+    }, 
+    error => {
+          if(error.status==422){
+          this.isError = true;
+          // this.ngxService.stop("loader-01");
+        }
+      }
+    );
   }
   public onSubmit(): void {
-    // this.submitted = true;
-    // if (this.form.invalid) {
-    //   return;
-    // }
-    // this.user.email=this.form.value.email;
-    // this.user.password=this.form.value.password; 
-    // this.card.name=this.user.name;
-    this.register();
+    this.submitted = true;
+    if (this.form.invalid) {
+      return;
+    }
+    this.partImages=this._butler.partImages; 
+    this.newPart=this.form.value; 
+    this.newPart.images=this.partImages;; 
+    this.newPart.userId=this._butler.userd; 
+    this.savePart();
   }
   getCards(){
     this.dataApiService.getAllCards().subscribe(response => {

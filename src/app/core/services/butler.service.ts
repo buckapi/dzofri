@@ -8,7 +8,14 @@ export class Butler {
 
     ticket:any[]=[];
     images:any[]=[];
+    myProducts$:any={};
+    cards$:any={};
+    products$:any={};
     currency:number=1;
+    myPartsSize:number=0;
+    newMembersSize:number=0;
+    activatedMembersSize:number=0;
+    partsSize:number=0;
     init:number=1;
     end:number=12;
     numProd:number=0;

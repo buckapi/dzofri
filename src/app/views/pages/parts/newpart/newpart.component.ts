@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
-// import { AbstractControl, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { AuthRESTService } from '@services/authREST.service';
 import { Butler } from '@services/butler.service';
 import { DataApiService } from '@services/data-api.service'; 
@@ -14,6 +14,15 @@ import { DemoFilePickerAdapter } from  './file-picker.adapter';
   styleUrls: ['./newpart.component.scss']
 })
 export class NewpartComponent implements OnInit, AfterViewInit {
+  returnUrl: any;
+  form: FormGroup = new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl(''),
+    name: new FormControl(''),
+  });
+  submitted = false;
+  public isError = false;
+  
   cards$:any=[];
   defaultNavActiveId = 1;
   adapter = new  DemoFilePickerAdapter(this.http,this._butler.file);

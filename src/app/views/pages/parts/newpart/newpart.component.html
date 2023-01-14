@@ -2,8 +2,8 @@
 
 <nav class="page-breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a routerLink=".">Miembros</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Solicitudes de registro</li>
+    <li class="breadcrumb-item"><a routerLink=".">Autopartes</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Agregar autoparte a invetario</li>
   </ol>
 </nav>
 
@@ -11,11 +11,21 @@
   <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-      <ngx-awesome-uploader
-      [adapter]="adapter"
-      >
-      </ngx-awesome-uploader>
-        
+        <div class="row position-relative">
+          <div class="col-lg-4 chat-aside border-end-lg">
+            <div class="aside-content">
+              <div class="aside-body">
+                <ngx-awesome-uploader
+                [adapter]="adapter"
+                >
+                </ngx-awesome-uploader>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8 chat-content">
+             
+          </div>
+        </div>
       </div>
     </div>
   </div>

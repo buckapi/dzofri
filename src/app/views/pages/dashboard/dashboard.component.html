@@ -36,11 +36,11 @@
             </div>
             <div class="row">
               <div class="col-6 col-md-12 col-xl-5">
-                <h3 class="mb-2">{{activatedMembersSize}}</h3>
+                <h3 class="mb-2">{{_butler.activatedMembersSize}}</h3>
                 <div class="d-flex align-items-baseline">
                   <p class="text-success">
 
-                    <span [routerLink]="['/members/request']" style="cursor:pointer;">+ {{newMembersSize}}</span>
+                    <span [routerLink]="['/members/request']" style="cursor:pointer;">+ {{_butler.newMembersSize}}</span>
                     <i data-feather="arrow-up" appFeatherIcon class="icon-sm mb-1"></i>
                   </p>
                 </div>
@@ -115,7 +115,7 @@
             </div>
             <div class="row">
               <div class="col-6 col-md-12 col-xl-5">
-                <h3 class="mb-2">{{partsSize}}</h3>
+                <h3 class="mb-2">{{_butler.partsSize}}</h3>
                 <div class="d-flex align-items-baseline">
                   <!-- <p class="text-success">
                     <span>+ 28 </span>
@@ -321,7 +321,7 @@
               </div>
               <div class="col-6 col-md-12 col-xl-7">
                 <div class="mt-md-3 mt-xl-0">
-                                 <a href="" (click)="false" class="d-none d-sm-block">
+                  <a href="" (click)="false" class="d-none d-sm-block">
                     <i class="feather icon-box icon-lg text-muted" ngbTooltip="Automoviles"></i>
                   </a>
                 </div>
@@ -433,7 +433,7 @@
               </div>
               <div class="row">
                 <div class="col-6 col-md-12 col-xl-5">
-                  <h3 class="mb-2">{{myPartsSize}}</h3>
+                  <h3 class="mb-2">{{_butler.myPartsSize}}</h3>
                 </div>
               </div>
             </div>

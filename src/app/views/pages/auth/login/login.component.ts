@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
     if (this.ngFormLogin.invalid) {
       return;
     } 
-      this.ngxService.start("loader-01");
+    this.ngxService.start("loader-01");
     return this.AuthRESTService.loginUser(
       this.ngFormLogin.value.email, 
       this.ngFormLogin.value.password
@@ -67,11 +67,19 @@ export class LoginComponent implements OnInit {
         this._butler.isLogged=true;
         this.dataApiService.getCardByUserId(this._butler.userd).subscribe(
           data =>{
+
             this._butler.userActive=data;
             this._butler.type=this._butler.userActive[0].userType;
             this._butler.images=this._butler.userActive[0].images;
             this._butler.name=this._butler.userActive[0].name;
             this._butler.email=this._butler.userActive[0].email;
+            if(this._butler.type=='member'){
+              this.getPartsById();
+            } 
+            if(this._butler.type=='admin'){
+              this.getCards();
+              this.getProducts();
+            }
           });       
         this._butler.name=data.name;
         this.isError = false;
@@ -81,7 +89,43 @@ export class LoginComponent implements OnInit {
       },
        error => this.onIsError()
     ); 
-  }   
+  }
+  getCards(){
+    this._butler.newMembersSize=0;
+    this._butler.activatedMembersSize=0;
+    this.dataApiService.getAllCards().subscribe(response => {
+    this._butler.cards$ = response;
+    let size = this._butler.cards$.length;
+      for (let i=0;i<size;i++){
+        if(this._butler.cards$[i].status=='pending'){
+          this._butler.newMembersSize=this._butler.newMembersSize+1;
+        }
+        if(this._butler.cards$[i].status=='activated'){
+          this._butler.activatedMembersSize=this._butler.activatedMembersSize+1;
+        }
+      }
+    });
+  }
+  getProducts(){
+    this._butler.products$=[];
+    setTimeout (() => {
+      this.dataApiService.getAllProducts().subscribe(response => {
+        this._butler.products$ = response;
+        this._butler.partsSize=this._butler.products$.length;
+      });
+    }, 100);
+   
+  }
+  getPartsById(){
+    this._butler.myProducts$=null;
+    setTimeout (() => {
+      this.dataApiService.getPartsById(this._butler.userd).subscribe(response => {
+        this._butler.myProducts$ = response;
+        this._butler.myPartsSize=this._butler.myProducts$.length;
+      });
+    }, 100);  
+  }  
+
   onIsError(): void {
       this.ngxService.stop("loader-01");
     this.isError = true;

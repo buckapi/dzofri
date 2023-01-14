@@ -8,7 +8,7 @@ import { DataApiService } from '@services/data-api.service';
 })
 export class CarslistComponent implements OnInit, AfterViewInit {
   cards$:any=[];
-  products$:any=[];
+  cars$:any=[];
   defaultNavActiveId = 1;
 
 
@@ -16,31 +16,31 @@ export class CarslistComponent implements OnInit, AfterViewInit {
     public _butler:Butler,
     public dataApiService: DataApiService,
     ) { }
- getCards(){
-    this.dataApiService.getAllCards().subscribe(response => {
-    this.cards$ = response
-    });
- }
- getParts(){
-    this.dataApiService.getAllProducts().subscribe(response => {
-    this.products$ = response
-    });
- }
- getMyParts(){
-    this.dataApiService.getPartsById(this._butler.userd).subscribe(response => {
-    this.products$ = response
-    });
- }
+   getCards(){
+      this.dataApiService.getAllCards().subscribe(response => {
+      this.cards$ = response
+      });
+   }
+   getCars(){
+      this.dataApiService.getAllCars().subscribe(response => {
+      this.cars$ = response
+      });
+   }
+   getMyCars(){
+      this.dataApiService.getCarsById(this._butler.userd).subscribe(response => {
+      this.cars$ = response
+      });
+   }
   ngOnInit(): void { 
     
   }
 
   ngAfterViewInit(): void {
     if (this._butler.type=='admin'){  
-      this.getParts();
+      this.getCars();
     }
     if (this._butler.type=='member'){  
-      this.getMyParts();
+      this.getMyCars();
     }
     // Show chat-content when clicking on chat-item for tablet and mobile devices
     document.querySelectorAll('.chat-list .chat-item').forEach(item => {

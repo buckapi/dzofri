@@ -1,7 +1,7 @@
 <nav class="page-breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a routerLink=".">Autopartes</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Inventario</li>
+    <li class="breadcrumb-item"><a routerLink=".">Automoviles</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Listado</li>
   </ol>
 </nav>
 
@@ -12,11 +12,9 @@
   <div _ngcontent-iec-c96="" class="d-flex align-items-center flex-wrap text-nowrap">
     
     
-    <button _ngcontent-iec-c96="" type="button" class="btn btn-primary btn-icon-text mb-2 mb-md-0" [routerLink]="['/parts/newpart']" [hidden]="_butler.type!='member'">
+    <button _ngcontent-iec-c96="" type="button" class="btn btn-primary btn-icon-text mb-2 mb-md-0" [routerLink]="['/cars/newcar']" [hidden]="_butler.type!='member'">
      <i class="feather icon-plus"></i>
-
-
-      Agregar autoparte
+      Agregar automovil
     </button>
   </div>
 </div>
@@ -38,16 +36,16 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor='let product of products$; let i = index'   >
+              <tr *ngFor='let car of cars$; let i = index'   >
                  <td class="py-1" sty>
-                  <img src="{{product.images[0]}}" alt="image">
+                  <img src="{{car.images[0]}}" alt="image">
                 </td>
-                <td>{{product.name}}</td>
-                <td>{{product.description}}</td>
+                <td>{{car.name}}</td>
+                <td>{{car.description}}</td>
 
-                <td>{{product.price}}</td>
-                <td>{{product.stock}}</td>
-                <!-- <td>{{product.createdAt | date:'dd/MM/yyyy'}}</td> -->
+                <td>{{car.price}}</td>
+                <td>{{car.stock}}</td>
+                <!-- <td>{{car.createdAt | date:'dd/MM/yyyy'}}</td> -->
               </tr>
             </tbody>
           </table>

@@ -7,6 +7,9 @@ import { Butler } from "@services/butler.service";
 export interface PartInterface {
 
 }
+export interface CarInterface {
+
+}
 export interface MemberInterface {
 
 }
@@ -23,8 +26,9 @@ export interface SerialInterface {
   providedIn: 'root'
 })
 export class DataApiService {
-		ticket: Observable<any>;
+	ticket: Observable<any>;
 	cards:any;
+	cars:any;
 	parts:any;
 	branch:any;
 	cierre:any;
@@ -45,6 +49,10 @@ export class DataApiService {
 
 	getAllProducts(){
 		const url_api = 'https://db.buckapi.us:9001/api/products';
+		return this.http.get(url_api);
+	}
+	getAllCars(){
+		const url_api = 'https://db.buckapi.us:9001/api/cars';
 		return this.http.get(url_api);
 	}
 	getAllCards(){
@@ -75,6 +83,11 @@ export class DataApiService {
 	getPartsById(userId: string){
 		const url_api = `https://db.buckapi.us:9001/api/products?filter[where][userId]=${userId}`;
 		this.parts = this.http.get(url_api);
+		return ( this.http.get(url_api));		
+	}
+	getCarsById(userId: string){
+		const url_api = `https://db.buckapi.us:9001/api/cars?filter[where][userId]=${userId}`;
+		this.cars = this.http.get(url_api);
 		return ( this.http.get(url_api));		
 	}
 	getCardByUserId(userId: string){
@@ -110,6 +123,12 @@ export class DataApiService {
 		.pipe(map(data => data));
 	}
 
+	saveCar(car :CarInterface){
+		const url_api='https://db.buckapi.us:9001/api/cars';
+		return this.http
+		.post<CarInterface>(url_api, car)
+		.pipe(map(data => data));
+	}
 	savePart(part :PartInterface){
 		const url_api='https://db.buckapi.us:9001/api/products';
 		return this.http

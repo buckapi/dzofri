@@ -26,10 +26,10 @@ export class NewcarComponent implements OnInit, AfterViewInit {
   submitted = false;
   public isError = false;
   public user:any={};
-  public newPart:any={};
+  public newCar:any={};
   cards$:any=[];
   defaultNavActiveId = 1;
-  partImages:any[]=[];
+  carImages:any[]=[];
   adapter = new  DemoFilePickerAdapter(this.http,this._butler);
   constructor(
     private http: HttpClient,
@@ -47,9 +47,9 @@ export class NewcarComponent implements OnInit, AfterViewInit {
   ngOnInit(): void { 
   }
   
-  public savePart(){  
-    this.dataApiService.savePart(this.newPart).subscribe(respose=>{
-      this.router.navigate(['parts/partslist']);
+  public saveCar(){  
+    this.dataApiService.saveCar(this.newCar).subscribe(respose=>{
+      this.router.navigate(['cars/carslist']);
     }, 
     error => {
           if(error.status==422){
@@ -64,11 +64,11 @@ export class NewcarComponent implements OnInit, AfterViewInit {
     if (this.form.invalid) {
       return;
     }
-    this.partImages=this._butler.partImages; 
-    this.newPart=this.form.value; 
-    this.newPart.images=this.partImages;; 
-    this.newPart.userId=this._butler.userd; 
-    this.savePart();
+    this.carImages=this._butler.carImages; 
+    this.newCar=this.form.value; 
+    this.newCar.images=this.carImages;; 
+    this.newCar.userId=this._butler.userd; 
+    this.saveCar();
   }
   getCards(){
     this.dataApiService.getAllCards().subscribe(response => {

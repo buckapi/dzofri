@@ -76,7 +76,8 @@ export class RegisterComponent implements OnInit {
             this._butler.name=this.form.value.name;
             this._butler.email=this.form.value.email;
             this._butler.type='member';
-            this.router.navigate(['/']);
+            this._butler.isLogged=true;
+            this.router.navigate(['dashboard']);
           });
         }, 
         error => {

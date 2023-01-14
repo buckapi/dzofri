@@ -11,6 +11,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { NgbDropdownModule, NgbTooltipModule, NgbNavModule, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 import { PartsComponent } from './parts.component';
@@ -94,6 +95,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
+    ReactiveFormsModule,
     FullCalendarModule, // import the FullCalendar module! will make the FullCalendar component available
     PerfectScrollbarModule,
     NgbDropdownModule,

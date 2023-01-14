@@ -16,13 +16,16 @@ import { DemoFilePickerAdapter } from  './file-picker.adapter';
 export class NewpartComponent implements OnInit, AfterViewInit {
   returnUrl: any;
   form: FormGroup = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
+    brand: new FormControl(''),
+    model: new FormControl(''),
     name: new FormControl(''),
+    description: new FormControl(''),
+    cod: new FormControl(''),
   });
   submitted = false;
   public isError = false;
-  
+  public user:any={};
+  public newPart:any={};
   cards$:any=[];
   defaultNavActiveId = 1;
   adapter = new  DemoFilePickerAdapter(this.http,this._butler.file);
@@ -32,13 +35,28 @@ export class NewpartComponent implements OnInit, AfterViewInit {
     private ngxService: NgxUiLoaderService,
     private router: Router,
     public _butler:Butler,
+    private formBuilder: FormBuilder,
     public dataApiService: DataApiService,
     public AuthRESTService:AuthRESTService
     ) {}
-
+  get f(): { [key: string]: AbstractControl } {
+    return this.form.controls;
+  }
   ngOnInit(): void { 
   }
-
+    public register(){  
+    
+  }
+  public onSubmit(): void {
+    // this.submitted = true;
+    // if (this.form.invalid) {
+    //   return;
+    // }
+    // this.user.email=this.form.value.email;
+    // this.user.password=this.form.value.password; 
+    // this.card.name=this.user.name;
+    this.register();
+  }
   getCards(){
     this.dataApiService.getAllCards().subscribe(response => {
     this.cards$ = response
@@ -46,6 +64,16 @@ export class NewpartComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this.form = this.formBuilder.group(
+      {        
+        brand: ['', Validators.required],
+        model: ['', Validators.required],
+        name: ['', Validators.required],
+        description: ['', Validators.required],
+        cod: ['', Validators.required],
+        price: [0, Validators.required],
+      }    
+    );
     this.getCards();
     // Show chat-content when clicking on chat-item for tablet and mobile devices
     document.querySelectorAll('.chat-list .chat-item').forEach(item => {

@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class Butler {
     car:any[]=[];
-
     ticket:any[]=[];
     images:any[]=[];
     myProducts$:any={};
@@ -23,14 +22,14 @@ export class Butler {
     totalNotifications:number=0;
     subTotalGral:number=0;
     results:number=0;
-        file:any={};
+    file:any={};
     preview:any={};
     bramch:any={};
     deal:any={};
     userActive:any={};
     totalProducts:number=0;
     imagePreviewProduct:string="";
-      subTotal:number=0;
+    subTotal:number=0;
     review:boolean=false;
     carsSelected:boolean=false;
     partsSelected:boolean=true;
@@ -68,8 +67,6 @@ export class Butler {
     userType:string=""; 
     email:string=""; 
     cards:any[]=[]; 
-
     serialT:number=0;
-
     constructor() { }
 }

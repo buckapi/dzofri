@@ -67,7 +67,6 @@ export class LoginComponent implements OnInit {
         this._butler.isLogged=true;
         this.dataApiService.getCardByUserId(this._butler.userd).subscribe(
           data =>{
-
             this._butler.userActive=data;
             this._butler.type=this._butler.userActive[0].userType;
             this._butler.images=this._butler.userActive[0].images;
@@ -75,10 +74,12 @@ export class LoginComponent implements OnInit {
             this._butler.email=this._butler.userActive[0].email;
             if(this._butler.type=='member'){
               this.getPartsById();
+              this.getCarsById();
             } 
             if(this._butler.type=='admin'){
               this.getCards();
               this.getProducts();
+              this.getCars();
             }
           });       
         this._butler.name=data.name;
@@ -113,8 +114,7 @@ export class LoginComponent implements OnInit {
         this._butler.products$ = response;
         this._butler.partsSize=this._butler.products$.length;
       });
-    }, 100);
-   
+    }, 100);   
   }
   getPartsById(){
     this._butler.myProducts$=null;
@@ -122,6 +122,24 @@ export class LoginComponent implements OnInit {
       this.dataApiService.getPartsById(this._butler.userd).subscribe(response => {
         this._butler.myProducts$ = response;
         this._butler.myPartsSize=this._butler.myProducts$.length;
+      });
+    }, 100);  
+  }
+  getCars(){
+    this._butler.cars$=[];
+    setTimeout (() => {
+      this.dataApiService.getAllCars().subscribe(response => {
+        this._butler.cars$ = response;
+        this._butler.carsSize=this._butler.cars$.length;
+      });
+    }, 100);   
+  }
+  getCarsById(){
+    this._butler.myCars$=null;
+    setTimeout (() => {
+      this.dataApiService.getCarsById(this._butler.userd).subscribe(response => {
+        this._butler.myCars$ = response;
+        this._butler.myCarsSize=this._butler.myCars$.length;
       });
     }, 100);  
   }  

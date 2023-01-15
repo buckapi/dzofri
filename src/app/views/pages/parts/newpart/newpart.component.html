@@ -80,6 +80,16 @@
                       </div>
                   </div>
                 </div>
+                <div class="col-md-6">             
+                  <div class="mb-3">
+                    <label  class="form-label">Existencia (Nivel de stock)</label>
+                    <input type="number" class="form-control" formControlName="stock" [ngClass]="{ 'is-invalid': submitted && f['stock'].errors }">
+                      <div *ngIf="submitted && f['stock'].errors" class="invalid-feedback">
+                        <div *ngIf="f['stock'].errors['required']">Campo requerido
+                        </div>
+                      </div>
+                  </div>
+                </div>
               </div>  
               <div>
                 <button  class="btn btn-primary me-2 mb-2 mb-md-0"type="submit" style="cursor: pointer;">Aceptar</button>

@@ -19,6 +19,7 @@ export class NewpartComponent implements OnInit, AfterViewInit {
     brand: new FormControl(''),
     model: new FormControl(''),
     price: new FormControl(''),
+    stock: new FormControl(''),
     name: new FormControl(''),
     description: new FormControl(''),
     cod: new FormControl(''),
@@ -85,6 +86,7 @@ export class NewpartComponent implements OnInit, AfterViewInit {
         description: ['', Validators.required],
         cod: ['', Validators.required],
         price: [0, Validators.required],
+        stock: [0, Validators.required],
       }    
     );
     this.getCards();

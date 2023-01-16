@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { FeatherIconModule } from '../../../core/feather-icon/feather-icon.module';
-
 import { NgbAccordionModule, NgbDropdownModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { GeneralComponent } from './general.component';
 import { BlankComponent } from './blank/blank.component';
 import { FaqComponent } from './faq/faq.component';
@@ -13,7 +10,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { PricingComponent } from './pricing/pricing.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { Routes, RouterModule } from '@angular/router';
-
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FilePickerModule } from  'ngx-awesome-uploader';
+import { ArchwizardModule } from 'angular-archwizard';
 const routes: Routes = [
   {
     path: '',
@@ -60,7 +60,11 @@ const routes: Routes = [
     FeatherIconModule,
     NgbAccordionModule,
     NgbDropdownModule,
-    NgbTooltipModule
+    ReactiveFormsModule,
+    FormsModule,
+    FilePickerModule,
+    NgbTooltipModule,
+    ArchwizardModule
   ]
 })
 export class GeneralModule { }

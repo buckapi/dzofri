@@ -68,10 +68,12 @@ export class LoginComponent implements OnInit {
         this.dataApiService.getCardByUserId(this._butler.userd).subscribe(
           data =>{
             this._butler.userActive=data;
+            this._butler.userId=this._butler.userActive[0].id;
             this._butler.type=this._butler.userActive[0].userType;
             this._butler.images=this._butler.userActive[0].images;
             this._butler.name=this._butler.userActive[0].name;
             this._butler.email=this._butler.userActive[0].email;
+            this._butler.profileStatus=this._butler.userActive[0].profileStatus;
             if(this._butler.type=='member'){
               this.getPartsById();
               this.getCarsById();
@@ -86,7 +88,14 @@ export class LoginComponent implements OnInit {
         this.isError = false;
         this.ngxService.stop("loader-01");
         localStorage.setItem('isLoggedin', 'true');
+        console.log("profile status: "+this._butler.profileStatus);
+        if(this._butler.profileStatus==="pending"){
+          this.router.navigate(['general/profile']);
+        }
+        if(this._butler.profileStatus==="complete"){
+          // this.router.navigate(['general/profile']);
         this.router.navigate(['dashboard']);
+        }
       },
        error => this.onIsError()
     ); 

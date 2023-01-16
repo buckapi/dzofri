@@ -4,7 +4,7 @@ import MetisMenu from 'metismenujs';
 import { MENU } from './membermenu';
 import { MenuItem } from './membermenu.model';
 import { Router, NavigationEnd } from '@angular/router';
-
+import { Butler } from '@services/butler.service';
 @Component({
   selector: 'app-membersidebar',
   templateUrl: './membersidebar.component.html',
@@ -16,8 +16,9 @@ export class MembersidebarComponent implements OnInit, AfterViewInit {
 
   menuItems: MenuItem[] = [];
   @ViewChild('sidebarMenu') sidebarMenu: ElementRef;
+  constructor(@Inject(DOCUMENT) private document: Document,public _butler:Butler, private renderer: Renderer2, public router: Router) { 
 
-  constructor(@Inject(DOCUMENT) private document: Document, private renderer: Renderer2, public router: Router) { 
+
     router.events.forEach((event) => {
       if (event instanceof NavigationEnd) {
 

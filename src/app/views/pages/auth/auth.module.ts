@@ -33,9 +33,9 @@ const routes: Routes = [
 @NgModule({
   declarations: [LoginComponent, RegisterComponent, AuthComponent],
   imports: [
-   NgxUiLoaderModule,
- ReactiveFormsModule,
- FormsModule,
+    NgxUiLoaderModule,
+    ReactiveFormsModule,
+    FormsModule,
     CommonModule,
     RouterModule.forChild(routes)
   ]

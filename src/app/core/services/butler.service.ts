@@ -9,6 +9,7 @@ export class Butler {
     images:any[]=[];
     partImages:any[]=[];
     carImages:any[]=[];
+    memberImages:any[]=[];
     myProducts$:any={};
     myCars$:any={};
     cards$:any={};
@@ -35,6 +36,7 @@ export class Butler {
     userActive:any={};
     totalProducts:number=0;
     imagePreviewProduct:string="";
+    profileStatus:string="";
     subTotal:number=0;
     review:boolean=false;
     carsSelected:boolean=false;

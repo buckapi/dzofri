@@ -1,9 +1,12 @@
-<nav class="navbar">
+<nav class="navbar" >
   <a href="" class="sidebar-toggler" (click)="toggleSidebar($event)">
     <i class="feather icon-menu"></i>
   </a>
   <div class="navbar-content">
-    <form class="search-form">
+    <div [hidden]="this._butler.profileStatus!='complete'">
+      
+    
+    <form class="search-form" >
       <div class="input-group">
         <div class="input-group-text">
           <i class="feather icon-search"></i>
@@ -11,8 +14,9 @@
         <input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
       </div>
     </form>
-    <ul class="navbar-nav">
-      <li class="nav-item nav-apps" ngbDropdown>
+    </div>
+    <ul class="navbar-nav" >
+      <li class="nav-item nav-apps" ngbDropdown >
         <a class="nav-link" ngbDropdownToggle id="appsDropdown">
           <i class="link-icon feather icon-grid"></i>
         </a>
@@ -21,7 +25,7 @@
             <p class="mb-0 fw-bold">Zofri Cars</p>
             <a href="javascript:;" class="text-muted">Edit</a>
           </div>
-          <div class="row g-0 p-1">
+          <div class="row g-0 p-1" [hidden]="this._butler.profileStatus!='complete'">
             <div class="col-6 text-center">
               <a routerLink="/cars/carslist" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i class="feather icon-truck icon-lg mb-1"></i><p class="tx-12">Autos</p></a>
             </div>

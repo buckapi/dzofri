@@ -18,7 +18,7 @@
     </div>
 
   </div>
-  <div class="sidebar-body" (mouseenter)="operSidebarFolded()" (mouseleave)="closeSidebarFolded()" [perfectScrollbar]>
+  <div class="sidebar-body" (mouseenter)="operSidebarFolded()" (mouseleave)="closeSidebarFolded()" [perfectScrollbar] [hidden]="this._butler.profileStatus!='complete'">
 
     <!--- Sidemenu start -->
 

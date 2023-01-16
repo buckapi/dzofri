@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row"  [hidden]="_butler.profileStatus=='pending'">
   <div class="col-12 grid-margin">
     <div class="card">
       <div class="position-relative">
@@ -44,7 +44,7 @@
     </div>
   </div>
 </div>
-<div class="row profile-body">
+<div class="row profile-body"  [hidden]="_butler.profileStatus=='pending'">
   <!-- left wrapper start -->
   <div class="d-none d-md-block col-md-4 col-xl-3 left-wrapper">
     <div class="card rounded">
@@ -321,3 +321,113 @@
   </div>
   <!-- right wrapper end -->
 </div>
+
+
+
+  <div class="col-md-6 grid-margin">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title" [hidden]="isForm1Submitted">{{tittle1}}</h6>
+        <h6 class="card-title" [hidden]="isForm2Submitted || !isForm1Submitted">{{tittle2}}</h6>
+        
+
+        <aw-wizard #wizardForm>
+          
+          <aw-wizard-step stepTitle="Empresa">
+            <form (ngSubmit)="form1Submit()" [formGroup]="validationForm1">
+
+              <div class="row mb-3">
+                <label for="direction" class="col-sm-3 col-form-label">Direccion</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="direction" formControlName="direction" 
+                  [ngClass]="{'is-invalid': isForm1Submitted && form1.direction.errors}" placeholder="Direccion">
+                  <div *ngIf="isForm1Submitted && form1.direction.errors?.required" class="invalid-feedback">
+                    Campo requerido
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="rut" class="col-sm-3 col-form-label">RUT</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="rut" formControlName="rut" 
+                    [ngClass]="{'is-invalid': isForm1Submitted && form1.rut.errors}" placeholder="RUT">
+                  <div *ngIf="isForm1Submitted && form1.rut.errors?.required" class="invalid-feedback">
+                    Campo requerido
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="phone" class="col-sm-3 col-form-label">Telefono de la empresa</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="phone" formControlName="phone" 
+                  [ngClass]="{'is-invalid': isForm1Submitted && form1.phone.errors}" placeholder="telefono de la empresa">
+                  <div *ngIf="isForm1Submitted && form1.phone.errors?.required" class="invalid-feedback">
+                    Campo requerido
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="facebook" class="col-sm-3 col-form-label">RRSS facebook</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="facebook" formControlName="facebook" 
+                  [ngClass]="{'is-invalid': isForm1Submitted && form1.facebook.errors}" placeholder="facebook">
+                 
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="instagram" class="col-sm-3 col-form-label">RRSS instagram</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="instagram" formControlName="instagram" 
+                  [ngClass]="{'is-invalid': isForm1Submitted && form1.instagram.errors}" placeholder="instagram">
+                 
+                </div>
+              </div>
+              <div class="d-flex justify-content-center mt-2">
+                <button class="btn btn-primary" type="submit">Continuar</button>
+              </div>
+            </form>
+          </aw-wizard-step>
+
+          <aw-wizard-step stepTitle="Administrador">
+            <form (ngSubmit)="form2Submit()" [formGroup]="validationForm2">
+              <div class="row mb-3">
+                <label for="adminName" class="col-sm-3 col-form-label">Nombre del administrador</label>
+                <div class="col-sm-9">
+                  <input type="adminName" class="form-control" id="adminName" formControlName="adminName"
+                  [ngClass]="{'is-invalid': isForm2Submitted && form2.adminName.errors}" placeholder="nombre del administrador">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="adminPhone" class="col-sm-3 col-form-label">Telefono del dministrador</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="adminPhone" formControlName="adminPhone"
+                  [ngClass]="{'is-invalid': isForm2Submitted && form2.adminPhone.errors}" placeholder="telefono number">
+                </div>
+              </div>
+             
+              <div class="d-flex justify-content-center mt-2">
+                <button class="btn btn-secondary me-2" type="button" awPreviousStep>Atras</button>
+                <button class="btn btn-primary" type="submit">Continuar</button>
+              </div>
+            </form>
+          </aw-wizard-step>
+
+          <aw-wizard-step stepTitle="Finalizar">
+            <div class="text-center">
+              <i data-feather="check-circle" appFeatherIcon class="text-success mt-4 mb-2 icon-xxl"></i>
+              <h3 class="text-muted mb-3">Gracias !</h3>
+              <p class="w-75 mx-auto mb-4 text-muted">El perfil de la empresa ha sido completado, presione finalizar para guardar la informacion </p>
+            </div>
+            <div class="d-flex justify-content-center mt-2">
+              <button class="btn btn-secondary me-2" type="button" awPreviousStep>Atras</button>
+              <button class="btn btn-success" type="button" (click)="finishFunction()">Terminar</button>
+            </div>
+          </aw-wizard-step>
+
+        </aw-wizard>
+
+      </div>
+    </div>
+  </div>

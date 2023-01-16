@@ -16,6 +16,7 @@ import { WizardComponent as BaseWizardComponent } from 'angular-archwizard';
 })
 export class ProfileComponent implements OnInit {
   returnUrl: any;
+  profile:any={};
 
   submitted = false;
   public isError = false;
@@ -32,7 +33,7 @@ export class ProfileComponent implements OnInit {
 
   isForm1Submitted: Boolean;
   isForm2Submitted: Boolean;
-    @ViewChild('wizardForm') wizardForm: BaseWizardComponent;
+  @ViewChild('wizardForm') wizardForm: BaseWizardComponent;
   constructor(
       private http: HttpClient,
       private route: ActivatedRoute,
@@ -78,6 +79,19 @@ export class ProfileComponent implements OnInit {
    * Wizard finish function
    */
   finishFunction() {
+    this.profile.name=this._butler.name;
+    this.profile.userd=this._butler.userd;
+    this.profile.email=this._butler.email;
+    this.profile.status="activated";
+    this.profile.userType="member";
+    this.profile.profileStatus="medium";
+    this.profile.images=this._butler.images;
+    this.dataApiService.memberUpdate(this.profile,this._butler.userId)
+    .subscribe(response=>{
+      this._butler.profileStatus="medium";
+
+    });
+
     alert('Successfully Completed');
   }
 
@@ -103,6 +117,11 @@ export class ProfileComponent implements OnInit {
       this.wizardForm.goToNextStep();
     }
     this.isForm1Submitted = true;
+    this.profile.direction=this.validationForm1.value.direction;
+    this.profile.rut=this.validationForm1.value.rut;
+    this.profile.phone=this.validationForm1.value.phone;
+    this.profile.facebook=this.validationForm1.value.facebook;
+    this.profile.instagram=this.validationForm1.value.instagram;
   }
 
   /**
@@ -111,9 +130,9 @@ export class ProfileComponent implements OnInit {
   form2Submit() {
     if(this.validationForm2.valid) {
       this.wizardForm.goToNextStep();
+      this.profile.adminName=this.validationForm2.value.adminName;
+      this.profile.adminPhone=this.validationForm2.value.adminPhone;
     }
     this.isForm2Submitted = true;
   }
-
-
 }

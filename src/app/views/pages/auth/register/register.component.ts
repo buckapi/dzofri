@@ -77,7 +77,8 @@ export class RegisterComponent implements OnInit {
             this._butler.email=this.form.value.email;
             this._butler.type='member';
             this._butler.isLogged=true;
-            this.router.navigate(['dashboard']);
+            this._butler.profileStatus="pending";
+            this.router.navigate(['general/profile']);
           });
         }, 
         error => {

@@ -1,0 +1,84 @@
+import {Vehicle} from 'src/app/interfaces/vehicle';
+
+export const VEHICLES: Vehicle[] = [
+    {
+    name:'camion',
+    basePrice:2000,
+    images:[
+      'assets/assetsryal/images/work.png'
+    ],
+    idCategory:'ca000001'
+  }, 
+  {
+    name:'camioneta ',
+    basePrice:5000,
+    images:[
+      'assets/assetsryal/images/work.png'
+    ],
+    idCategory:'ca000002'
+  },
+    {
+    name:'citycar',
+    basePrice:2000,
+    images:[
+      'assets/assetsryal/images/work.png'
+    ],
+    idCategory:'ca000003'
+  },
+   {
+    name:'deportivo',
+    basePrice:2500,
+    images:[
+      'assets/assetsryal/images/work.png'
+    ],
+    idCategory:'ca000004'
+  },
+   {
+    name:'furgon',
+    basePrice:2500,
+    images:[
+      'assets/assetsryal/images/work.png'
+    ],
+    idCategory:'ca000005'
+  },
+   {
+    name:'maquinaria',
+    basePrice:2500,
+    images:[
+      'assets/assetsryal/images/work.png'
+    ],
+    idCategory:'ca000006'
+  },  
+   {
+    name:'microbus / bus',
+    basePrice:2500,
+    images:[
+      'assets/assetsryal/images/work.png'
+    ],
+    idCategory:'ca000007'
+  },  
+   {
+    name:'pickup',
+    basePrice:2500,
+    images:[
+      'assets/assetsryal/images/work.png'
+    ],
+    idCategory:'ca000008'
+  },  
+   {
+    name:'station wagon',
+    basePrice:2500,
+    images:[
+      'assets/assetsryal/images/work.png'
+    ],
+    idCategory:'ca000009'
+  },  
+   {
+    name:'SUV',  
+    basePrice:2500,
+    images:[
+      'assets/assetsryal/images/work.png'
+    ],
+    idCategory:'ca000010'
+  }
+];

@@ -23,7 +23,7 @@ const routes: Routes = [
       },
       {
         path: 'orders',
-        loadChildren: () => import('./views/pages/orders/orders.module').then(m => m.MembersModule)
+        loadChildren: () => import('./views/pages/orders/orders.module').then(m => m.OrdersModule)
       },
       {
         path: 'cars',

@@ -84,11 +84,11 @@ export class ProfileComponent implements OnInit {
     this.profile.email=this._butler.email;
     this.profile.status="activated";
     this.profile.userType="member";
-    this.profile.profileStatus="medium";
-    this.profile.images=this._butler.images;
+    this.profile.profileStatus="complete";
+    this.profile.images=this._butler.memberImages;
     this.dataApiService.memberUpdate(this.profile,this._butler.userId)
     .subscribe(response=>{
-      this._butler.profileStatus="medium";
+      this._butler.profileStatus="complete";
 
     });
 

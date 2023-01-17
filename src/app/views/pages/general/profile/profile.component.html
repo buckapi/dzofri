@@ -44,6 +44,7 @@
     </div>
   </div>
 </div>
+
 <div class="row profile-body"  [hidden]="_butler.profileStatus!='complete'">
   <!-- left wrapper start -->
   <div class="d-none d-md-block col-md-4 col-xl-3 left-wrapper">
@@ -321,15 +322,23 @@
   </div>
   <!-- right wrapper end -->
 </div>
-
-
-
-  <div class="col-md-6 grid-margin" [hidden]="_butler.profileStatus=='medium' || _butler.profileStatus=='complete' ">
+<div class="d-flex justify-content-between align-items-center flex-wrap grid-margin" [hidden]="_butler.profileStatus!='complete'">
+  <div>
+    <h4 class="mb-3 mb-md-0">Bienvenido!</h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 grid-margin" [hidden]="_butler.profileStatus=='complete' ">
+    <ngx-awesome-uploader [adapter]="adapter"
+    >
+    </ngx-awesome-uploader>
+  </div>
+  <div class="col-md-6 grid-margin" [hidden]="_butler.profileStatus=='complete' ||  !_butler.profileImageLoaded ">
     <div class="card">
       <div class="card-body">
         <h6 class="card-title" [hidden]="isForm1Submitted">{{tittle1}}</h6>
         <h6 class="card-title" [hidden]="isForm2Submitted || !isForm1Submitted">{{tittle2}}</h6>
-        
+    
 
         <aw-wizard #wizardForm>
           
@@ -431,3 +440,4 @@
       </div>
     </div>
   </div>
+</div>

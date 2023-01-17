@@ -39,6 +39,7 @@ export class Butler {
     profileStatus:string="";
     subTotal:number=0;
     review:boolean=false;
+    profileImageLoaded:boolean=false;
     carsSelected:boolean=false;
     partsSelected:boolean=true;
     vector:any={};       

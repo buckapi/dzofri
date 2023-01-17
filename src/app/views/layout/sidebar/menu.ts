@@ -49,6 +49,6 @@ export const MENU: MenuItem[] = [
   {
     label: 'Ordenes de compra',
     icon: 'shopping-cart',
-    link: '/apps/chat',
+    link: '/orders/orderlist',
   },
 ];

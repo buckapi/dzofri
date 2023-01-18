@@ -17,10 +17,24 @@ import {VEHICLES} from '@services/vehicles.service';
 })
 export class NewcarComponent implements OnInit, AfterViewInit {
   returnUrl: any;
-
+  vehiclePreview:any=[];
   vehicles: any;
-
+  fuelTypes:any=[
+    {name:"Bencina",idFuelType:"0001"},
+    {name:"Diesel",idFuelType:"0002"}
+    ];  
+  transmisionTypes:any=[
+    {name:"Manual",idTransmisionType:"0001"},
+    {name:"Automatica",idTransmisionType:"0002"}
+    ];  
+  vehicleStatusArray:any=[
+    {name:"Nuevo",vehicleStatus:"0001"},
+    {name:"Usado",vehicleStatus:"0002"}
+    ];
    carType="Seleccione una!";
+   fuelType="Seleccione una!";
+   transmision="Seleccione una!";
+   vehicleStatus="Seleccione una!";
 
   form: FormGroup = new FormGroup({
     brand: new FormControl(''),
@@ -31,7 +45,7 @@ export class NewcarComponent implements OnInit, AfterViewInit {
     fuelType: new FormControl(''),
     mileage: new FormControl(''),
     name: new FormControl(''),
-    new: new FormControl(''),
+    vehicleStatus: new FormControl(''),
     model: new FormControl(''),
     price: new FormControl(''),
     transmision: new FormControl(''),
@@ -65,7 +79,20 @@ export class NewcarComponent implements OnInit, AfterViewInit {
   ngOnInit(): void { 
   }
   setVehicle(selected:any){
-    console.log("selected: "+this.vehicles[selected].name);
+    this.vehiclePreview.carType=this.vehicles[selected];
+    console.log("selected: "+this.vehiclePreview.carType.name);
+  }
+  setFuelType(selected:any){
+    this.vehiclePreview.fuelType=this.fuelTypes[selected];
+    console.log("selected: "+this.vehiclePreview.fuelType.name);
+  }
+  setTransmisionType(selected:any){
+    this.vehiclePreview.transmision=this.transmisionTypes[selected];
+    console.log("selected: "+this.vehiclePreview.transmision.name);
+  }
+  setVehicleStatus(selected:any){
+    this.vehiclePreview.vehicleStatus=this.vehicleStatusArray[selected];
+    console.log("selected: "+this.vehiclePreview.vehicleStatus.name);
   }
   public saveCar(){  
     this.dataApiService.saveCar(this.newCar).subscribe(respose=>{
@@ -86,6 +113,10 @@ export class NewcarComponent implements OnInit, AfterViewInit {
     }
     this.carImages=this._butler.carImages; 
     this.newCar=this.form.value; 
+    this.newCar.transmision=this.vehiclePreview.transmision;
+    this.newCar.fuelType=this.vehiclePreview.fuelType;
+    this.newCar.carType=this.vehiclePreview.carType;
+    this.newCar.vehicleStatus=this.vehiclePreview.vehicleStatus;
     this.newCar.images=this.carImages;; 
     this.newCar.userId=this._butler.userd; 
     this.saveCar();
@@ -100,12 +131,11 @@ export class NewcarComponent implements OnInit, AfterViewInit {
     this.form = this.formBuilder.group(
       {        
         brand: ['', Validators.required],
-        model: ['', Validators.required],
         name: ['', Validators.required],
-        carType: ['', Validators.required],
         description: ['', Validators.required],
-        cod: ['', Validators.required],
         price: [0, Validators.required],
+        year: [0, Validators.required],
+        displacement: [0, Validators.required],
       }    
     );
     this.getCards();

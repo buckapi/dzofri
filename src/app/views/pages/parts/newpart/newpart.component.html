@@ -12,6 +12,16 @@
     <div class="card">
       <div class="card-body">
         <div class="row position-relative">
+           <div class="col-lg-5 chat-aside border-end-lg">
+            <div class="aside-content">
+              <div class="aside-body">
+                <ngx-awesome-uploader
+                [adapter]="adapter"
+                >
+                </ngx-awesome-uploader>
+              </div>
+            </div>
+          </div>
           <div class="col-lg-7 chat-content">
             <form class="forms-sample" [formGroup]="form" (ngSubmit)="onSubmit()">
               <div class="row">
@@ -94,17 +104,7 @@
               </div>
              
             </form>
-          </div>
-          <div class="col-lg-5 chat-aside border-end-lg">
-            <div class="aside-content">
-              <div class="aside-body">
-                <ngx-awesome-uploader
-                [adapter]="adapter"
-                >
-                </ngx-awesome-uploader>
-              </div>
-            </div>
-          </div>
+          </div>         
         </div>
       </div>
     </div>

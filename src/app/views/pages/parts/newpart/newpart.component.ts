@@ -93,6 +93,7 @@ export class NewpartComponent implements OnInit, AfterViewInit {
       {        
         brand: ['', Validators.required],
         model: ['', Validators.required],
+        carType: ['', Validators.required],
         name: ['', Validators.required],
         category: ['', Validators.required],
         description: ['', Validators.required],

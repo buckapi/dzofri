@@ -1,4 +1,4 @@
-import {Vehicle} from 'src/app/interfaces/vehicle';
+import {Vehicle} from '@interfaces/vehicle';
 
 export const VEHICLES: Vehicle[] = [
     {
@@ -7,7 +7,7 @@ export const VEHICLES: Vehicle[] = [
     images:[
       'assets/assetsryal/images/work.png'
     ],
-    idCategory:'ca000001'
+    idVehicle:'ca000001'
   }, 
   {
     name:'camioneta ',
@@ -15,7 +15,7 @@ export const VEHICLES: Vehicle[] = [
     images:[
       'assets/assetsryal/images/work.png'
     ],
-    idCategory:'ca000002'
+    idVehicle:'ca000002'
   },
     {
     name:'citycar',
@@ -23,7 +23,7 @@ export const VEHICLES: Vehicle[] = [
     images:[
       'assets/assetsryal/images/work.png'
     ],
-    idCategory:'ca000003'
+    idVehicle:'ca000003'
   },
    {
     name:'deportivo',
@@ -31,7 +31,7 @@ export const VEHICLES: Vehicle[] = [
     images:[
       'assets/assetsryal/images/work.png'
     ],
-    idCategory:'ca000004'
+    idVehicle:'ca000004'
   },
    {
     name:'furgon',
@@ -39,7 +39,7 @@ export const VEHICLES: Vehicle[] = [
     images:[
       'assets/assetsryal/images/work.png'
     ],
-    idCategory:'ca000005'
+    idVehicle:'ca000005'
   },
    {
     name:'maquinaria',
@@ -47,7 +47,7 @@ export const VEHICLES: Vehicle[] = [
     images:[
       'assets/assetsryal/images/work.png'
     ],
-    idCategory:'ca000006'
+    idVehicle:'ca000006'
   },  
    {
     name:'microbus / bus',
@@ -55,7 +55,7 @@ export const VEHICLES: Vehicle[] = [
     images:[
       'assets/assetsryal/images/work.png'
     ],
-    idCategory:'ca000007'
+    idVehicle:'ca000007'
   },  
    {
     name:'pickup',
@@ -63,7 +63,7 @@ export const VEHICLES: Vehicle[] = [
     images:[
       'assets/assetsryal/images/work.png'
     ],
-    idCategory:'ca000008'
+    idVehicle:'ca000008'
   },  
    {
     name:'station wagon',
@@ -71,7 +71,7 @@ export const VEHICLES: Vehicle[] = [
     images:[
       'assets/assetsryal/images/work.png'
     ],
-    idCategory:'ca000009'
+    idVehicle:'ca000009'
   },  
    {
     name:'SUV',  
@@ -79,6 +79,6 @@ export const VEHICLES: Vehicle[] = [
     images:[
       'assets/assetsryal/images/work.png'
     ],
-    idCategory:'ca000010'
+    idVehicle:'ca000010'
   }
 ];

@@ -1,5 +1,3 @@
-
-
 <nav class="page-breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a routerLink=".">Autopartes</a></li>
@@ -12,6 +10,16 @@
     <div class="card">
       <div class="card-body">
         <div class="row position-relative">
+          <div class="col-lg-5 chat-aside border-end-lg">
+            <div class="aside-content">
+              <div class="aside-body">
+                <ngx-awesome-uploader
+                [adapter]="adapter"
+                >
+                </ngx-awesome-uploader>
+              </div>
+            </div>
+          </div>
           <div class="col-lg-7 chat-content">
             <form class="forms-sample" [formGroup]="form" (ngSubmit)="onSubmit()">
               <div class="row">
@@ -19,21 +27,19 @@
                   <div class="mb-3">
                     <label for="exampleInputUsername1" class="form-label">Nombre</label>
                     <input type="text" class="form-control"  formControlName="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
-                      <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
-                        <div *ngIf="f['name'].errors['required']">Campo requerido
-                        </div>
+                    <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                      <div *ngIf="f['name'].errors['required']">Campo requerido
                       </div>
+                    </div>
                   </div>   
                 </div>
                 <div class="col-md-6">            
                   <div class="mb-3">
-                    <label  class="form-label">Codigo de referencia</label>
-                    <input type="text" class="form-control" formControlName="cod" [ngClass]="{ 'is-invalid': submitted && f['cod'].errors }">
-                      <div *ngIf="submitted && f['cod'].errors" class="invalid-feedback">
-                        <div *ngIf="f['cod'].errors['required']">Campo requerido
-                        </div>
-                      </div>
-                  </div>                  
+                    <label  class="form-label">Tipo</label>
+                    <select id="carType" class="form-control wide"[(ngModel)]="carType" (ngModelChange)="setVehicle(carType)" [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let vehicle of vehicles, let i = index " [ngValue]="i"> <span   style="cursor:pointer;">{{vehicle.name}}</span></option>
+                    </select>
+                  </div>                 
                 </div>
               </div>
                         
@@ -52,20 +58,20 @@
                   <div class="mb-3">
                     <label for="exampleInputUsername1" class="form-label">Marca</label>
                     <input type="text" class="form-control" formControlName="brand" [ngClass]="{ 'is-invalid': submitted && f['brand'].errors }">
-                      <div *ngIf="submitted && f['brand'].errors" class="invalid-feedback">
-                        <div *ngIf="f['brand'].errors['required']">Campo requerido
-                        </div>
+                    <div *ngIf="submitted && f['brand'].errors" class="invalid-feedback">
+                      <div *ngIf="f['brand'].errors['required']">Campo requerido
                       </div>
+                    </div>
                   </div>   
                 </div>
                 <div class="col-md-6">            
                   <div class="mb-3">
                     <label  class="form-label">Modelo</label>
                     <input type="text" class="form-control"  formControlName="model" [ngClass]="{ 'is-invalid': submitted && f['model'].errors }">
-                      <div *ngIf="submitted && f['model'].errors" class="invalid-feedback">
-                        <div *ngIf="f['model'].errors['required']">Campo requerido
-                        </div>
+                    <div *ngIf="submitted && f['model'].errors" class="invalid-feedback">
+                      <div *ngIf="f['model'].errors['required']">Campo requerido
                       </div>
+                    </div>
                   </div>                  
                 </div>
               </div>
@@ -74,10 +80,10 @@
                   <div class="mb-3">
                     <label  class="form-label">Precio</label>
                     <input type="number" class="form-control" formControlName="price" [ngClass]="{ 'is-invalid': submitted && f['price'].errors }">
-                      <div *ngIf="submitted && f['price'].errors" class="invalid-feedback">
-                        <div *ngIf="f['price'].errors['required']">Campo requerido
-                        </div>
+                    <div *ngIf="submitted && f['price'].errors" class="invalid-feedback">
+                      <div *ngIf="f['price'].errors['required']">Campo requerido
                       </div>
+                    </div>
                   </div>
                 </div>
               </div>  
@@ -87,16 +93,7 @@
              
             </form>
           </div>
-          <div class="col-lg-5 chat-aside border-end-lg">
-            <div class="aside-content">
-              <div class="aside-body">
-                <ngx-awesome-uploader
-                [adapter]="adapter"
-                >
-                </ngx-awesome-uploader>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
     </div>

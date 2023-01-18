@@ -7,6 +7,7 @@ import { DataApiService } from '@services/data-api.service';
 import{NgxUiLoaderService} from 'ngx-ui-loader';
 import { HttpClient } from  '@angular/common/http';
 import { DemoFilePickerAdapter } from  './file-picker.adapter';
+import {CATEGORIES} from '@services/categories.service';
 
 @Component({
   selector: 'app-newpart',
@@ -15,6 +16,8 @@ import { DemoFilePickerAdapter } from  './file-picker.adapter';
 })
 export class NewpartComponent implements OnInit, AfterViewInit {
   returnUrl: any;
+  categories: any;
+   category="Seleccione una!";
   form: FormGroup = new FormGroup({
     brand: new FormControl(''),
     model: new FormControl(''),
@@ -22,6 +25,7 @@ export class NewpartComponent implements OnInit, AfterViewInit {
     stock: new FormControl(''),
     name: new FormControl(''),
     description: new FormControl(''),
+    category: new FormControl(''),
     cod: new FormControl(''),
   });
   submitted = false;
@@ -41,7 +45,10 @@ export class NewpartComponent implements OnInit, AfterViewInit {
     private formBuilder: FormBuilder,
     public dataApiService: DataApiService,
     public AuthRESTService:AuthRESTService
-    ) {}
+    ) {
+    this.categories=CATEGORIES
+
+  }
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
   }
@@ -67,9 +74,13 @@ export class NewpartComponent implements OnInit, AfterViewInit {
     }
     this.partImages=this._butler.partImages; 
     this.newPart=this.form.value; 
+    // this.newPart.category=this.form.value; 
     this.newPart.images=this.partImages;; 
     this.newPart.userId=this._butler.userd; 
     this.savePart();
+  }
+  setCategory(selected:any){
+    console.log("selected: "+this.categories[selected].name);
   }
   getCards(){
     this.dataApiService.getAllCards().subscribe(response => {
@@ -83,6 +94,7 @@ export class NewpartComponent implements OnInit, AfterViewInit {
         brand: ['', Validators.required],
         model: ['', Validators.required],
         name: ['', Validators.required],
+        category: ['', Validators.required],
         description: ['', Validators.required],
         cod: ['', Validators.required],
         price: [0, Validators.required],

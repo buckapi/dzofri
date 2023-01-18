@@ -1,4 +1,4 @@
-import {Category} from 'src/app/interfaces/category';
+import {Category} from '@interfaces/category';
 
 export const CATEGORIES: Category[] = [
     {

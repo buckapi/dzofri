@@ -27,12 +27,10 @@
                 </div>
                 <div class="col-md-6">            
                   <div class="mb-3">
-                    <label  class="form-label">Codigo de referencia</label>
-                    <input type="text" class="form-control" formControlName="cod" [ngClass]="{ 'is-invalid': submitted && f['cod'].errors }">
-                      <div *ngIf="submitted && f['cod'].errors" class="invalid-feedback">
-                        <div *ngIf="f['cod'].errors['required']">Campo requerido
-                        </div>
-                      </div>
+                    <label  class="form-label">Categoria</label>
+                    <select id="district" class="form-control wide"[(ngModel)]="category" (ngModelChange)="setCategory(category)" [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let category of categories, let i = index " [ngValue]="i"> <span   style="cursor:pointer;">{{category.name}}</span></option>
+                    </select>
                   </div>                  
                 </div>
               </div>

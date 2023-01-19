@@ -23,6 +23,7 @@ export class DemoFilePickerAdapter extends FilePickerAdapter {
       map( (res: HttpEvent<any>) => {
           if (res.type === HttpEventType.Response) {
           this._butler.carImages.push('https://db.buckapi.us/api/server/local-storage/tixsImages/'+res.body.result.files.file[0].name);
+          this._butler.newCarImage=true;
           return res.body.id.toString();
         } else if (res.type ===  HttpEventType.UploadProgress && res.total  !== undefined) {
             const UploadProgress = +Math.round((100 * res.loaded) / res.total);

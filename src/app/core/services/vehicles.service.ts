@@ -1,84 +1,44 @@
 import {Vehicle} from '@interfaces/vehicle';
 
 export const VEHICLES: Vehicle[] = [
-    {
+  {
     name:'camion',
-    basePrice:2000,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
     idVehicle:'ca000001'
   }, 
   {
     name:'camioneta ',
-    basePrice:5000,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
     idVehicle:'ca000002'
   },
     {
     name:'citycar',
-    basePrice:2000,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
     idVehicle:'ca000003'
   },
    {
     name:'deportivo',
-    basePrice:2500,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
     idVehicle:'ca000004'
   },
    {
     name:'furgon',
-    basePrice:2500,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
     idVehicle:'ca000005'
   },
    {
     name:'maquinaria',
-    basePrice:2500,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
     idVehicle:'ca000006'
   },  
    {
     name:'microbus / bus',
-    basePrice:2500,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
     idVehicle:'ca000007'
   },  
    {
     name:'pickup',
-    basePrice:2500,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
     idVehicle:'ca000008'
   },  
    {
     name:'station wagon',
-    basePrice:2500,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
     idVehicle:'ca000009'
   },  
    {
     name:'SUV',  
-    basePrice:2500,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
     idVehicle:'ca000010'
   }
 ];

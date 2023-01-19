@@ -89,6 +89,7 @@ export class NewpartComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this._butler.newPartImage=false;
     this.form = this.formBuilder.group(
       {        
         brand: ['', Validators.required],

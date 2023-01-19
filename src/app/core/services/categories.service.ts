@@ -1,156 +1,80 @@
 import {Category} from '@interfaces/category';
 
 export const CATEGORIES: Category[] = [
-    {
+  {
     name:'accesorios',
-    basePrice:2000,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
     idCategory:'ca000001'
   }, 
   {
- name:'amortiguadores ',
-    basePrice:5000,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
+    name:'amortiguadores ',
     idCategory:'ca000002'
   },
-    {
- name:'aros',
-    basePrice:2000,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
+  {
+    name:'aros',
     idCategory:'ca000003'
   },
-   {
- name:'cajas de cambio',
-    basePrice:2500,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
+  {
+    name:'cajas de cambio',
     idCategory:'ca000004'
   },
-   {
-  name:'diferenciales',
-    basePrice:2500,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
+  {
+    name:'diferenciales',
     idCategory:'ca000005'
   },
-   {
- name:'frenos',
-    basePrice:2500,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
+  {
+    name:'frenos',
     idCategory:'ca000006'
   },  
-   {
- name:'herramientas',
-    basePrice:2500,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
+  {
+    name:'herramientas',
     idCategory:'ca000007'
   },  
-   {
- name:'limpieza y cuidados',
-    basePrice:2500,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
+  {
+    name:'limpieza y cuidados',
     idCategory:'ca000008'
   },  
-   {
- name:'lubricantes',
-    basePrice:2500,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
+  {
+    name:'lubricantes',
     idCategory:'ca000009'
   },  
-   {
- name:'luces', 
-    basePrice:2500,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
+  {
+    name:'luces', 
     idCategory:'ca000010'
   },  
-   {
- name:'motores', 
-    basePrice:2500,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
+  {
+    name:'motores', 
     idCategory:'ca000011'
   },  
-   {
- name:'neumáticos',
-    basePrice:2500,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
+  {
+    name:'neumáticos',
     idCategory:'ca000012'
   },  
-   {
- name:'parachoques', 
-    basePrice:2500,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
+  {
+    name:'parachoques', 
     idCategory:'ca000013'
   },  
-   {
-name:'repuestos en general',
-    basePrice:2500,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
+  {
+    name:'repuestos en general',
     idCategory:'ca000014'
   },  
-   {
- name:'sistema eléctrico',
-    basePrice:2500,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
+  {
+    name:'sistema eléctrico',
     idCategory:'ca000015'
   },  
-   {
-name:'sistema de encendido',
-    basePrice:2500,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
+  {
+    name:'sistema de encendido',
     idCategory:'ca000016'
   },  
-   {
- name:'sistema motor',
-    basePrice:2500,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
+  {
+    name:'sistema motor',
     idCategory:'ca000017'
   },  
-   {
- name:'sistema suspensión',
-    basePrice:2500,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
+  {
+    name:'sistema suspensión',
     idCategory:'ca000018'
   },   
-   {
- name:'transmisiones',
-    basePrice:2500,
-    images:[
-      'assets/assetsryal/images/work.png'
-    ],
+  {
+    name:'transmisiones',
     idCategory:'ca000019'
   }
 ];

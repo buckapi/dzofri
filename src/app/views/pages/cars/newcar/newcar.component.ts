@@ -128,6 +128,7 @@ export class NewcarComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this._butler.newCarImage=true;
     this.form = this.formBuilder.group(
       {        
         brand: ['', Validators.required],

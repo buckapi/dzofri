@@ -57,6 +57,7 @@ export class NewpartComponent implements OnInit, AfterViewInit {
   
   public savePart(){  
     this.dataApiService.savePart(this.newPart).subscribe(respose=>{
+      this._butler.partImages=[];
       this.router.navigate(['parts/partslist']);
     }, 
     error => {

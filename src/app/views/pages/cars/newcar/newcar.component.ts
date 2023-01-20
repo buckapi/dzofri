@@ -96,6 +96,7 @@ export class NewcarComponent implements OnInit, AfterViewInit {
   }
   public saveCar(){  
     this.dataApiService.saveCar(this.newCar).subscribe(respose=>{
+      this._butler.carImages=[];
       this.router.navigate(['cars/carslist']);
     }, 
     error => {

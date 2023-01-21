@@ -79,6 +79,7 @@ export class ProfileComponent implements OnInit {
    * Wizard finish function
    */
   finishFunction() {
+     this.ngxService.start("loader-01");
     this.profile.name=this._butler.name;
     this.profile.userd=this._butler.userd;
     this.profile.email=this._butler.email;
@@ -88,11 +89,12 @@ export class ProfileComponent implements OnInit {
     this.profile.images=this._butler.memberImages;
     this.dataApiService.memberUpdate(this.profile,this._butler.userId)
     .subscribe(response=>{
-      this._butler.profileStatus="complete";
-
+        this._butler.profileStatus="complete";
+        this.ngxService.stop("loader-01");
+        this.router.navigate(['dashboard']);
     });
 
-    alert('Successfully Completed');
+    // alert('Successfully Completed');
   }
 
   /**

@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FilePickerModule } from  'ngx-awesome-uploader';
 import { ArchwizardModule } from 'angular-archwizard';
+import { NgxUiLoaderModule } from "ngx-ui-loader";
 const routes: Routes = [
   {
     path: '',
@@ -64,6 +65,7 @@ const routes: Routes = [
     FormsModule,
     FilePickerModule,
     NgbTooltipModule,
+     NgxUiLoaderModule,
     ArchwizardModule
   ]
 })
